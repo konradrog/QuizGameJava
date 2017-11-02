@@ -38,14 +38,14 @@ public class Question {
 
     }
 
-    public void dispQuestion() {
+    public String dispQuestion() {
 
         System.out.println(text);
         for (int i = 0; i < 4; i++)
         {
             System.out.println(answers[i][1]);
         }
-
+        return "";
     }
 
 

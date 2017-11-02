@@ -6,10 +6,11 @@ import java.util.*;
 public class Game {
     public Game() throws IOException {
 
-        this.readFile();
+
+        this.showMenu(this.readFile());
     }
 
-    public static void readFile() throws IOException {
+    public ArrayList<Question>/*static void*/ readFile() throws IOException {
         FileReader fileReader = new FileReader("C:/Users/Konrad/IdeaProjects/QuizGame/src/pytania.txt");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
 
@@ -41,9 +42,41 @@ public class Game {
             buff += 10;
         }
         bufferedReader.close();
+        return questions;
      }
 
-     public static void showMenu(){
+    public static void showMenu(ArrayList<Question> questions){
+        System.out.println("Cześć! Aby rozpocząć grę wybierz numer zestawu pytań (wpisz cyfrę między 1-5)");
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        System.out.println("Wybrałeś zestaw pytań nr: " + num );
 
-     }
+        for (int i = 0; i < questions.size(); i++){
+            System.out.println(questions.get(i).dispQuestion());
+
+        }
+
+    }
+
+    public String getAnswer(){
+        Scanner sc = new Scanner(System.in);
+        String num = sc.nextLine();
+
+        return num;
+    }
+
+    public int checkAnswer(String num, Question question) {
+        int answer = 0;
+        switch (num){
+            case "a": answer = 0;
+                    break;
+            case "b": answer = 1;
+                break;
+            case "c": answer = 2;
+                break;
+            case "d": answer = 3;
+                break;
+        }
+        return answer;
+    }
 }
