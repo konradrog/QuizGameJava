@@ -7,6 +7,7 @@ b) peleton
 c) konw�j
 0
 d) plejada
+
 2.	Co oznacza nazwa �frutti di mare� ?
 1
 a) owoce morza
@@ -16,6 +17,7 @@ b) owoce cytrusowe
 c) owoce le�ne
 0
 d) owoce tropikalne
+
 3.	Sport wodny uprawiany na desce z �aglem to:
 0
 a) skateboard
@@ -25,6 +27,7 @@ b) surfing
 c) windsurfing
 0
 d) bojery
+
 4.	Kana� Sueski stanowi umown� granic� mi�dzy:
 0
 a) Amerykami
@@ -34,6 +37,7 @@ b) Afryk� i Azj�
 c) Australi� i Azj�
 0
 d) Kanad� i Grenlandi�
+
 5.	Andrzej Grubba to wielokrotny medalista:
 0
 a) w siatk�wce

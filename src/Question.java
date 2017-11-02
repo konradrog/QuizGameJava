@@ -1,7 +1,8 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-
+import java.util.*;
+/* pomyślec nad zmianą formatu pliku textowego, testy, osobna klasa do odpowiedzi, poprawić dokumentacje*/
 public class Question {
     String text;
     String[][] answers;
