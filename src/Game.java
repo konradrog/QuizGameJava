@@ -4,10 +4,18 @@ import java.io.IOException;
 import java.util.*;
 
 public class Game {
+    int score = 0;
+
     public Game() throws IOException {
 
-
         this.showMenu(this.readFile());
+    }
+
+    public int getScore(){
+        return score;
+    }
+    public void setScore(int score){
+        this.score += score;
     }
 
     public ArrayList<Question>/*static void*/ readFile() throws IOException {
@@ -45,7 +53,7 @@ public class Game {
         return questions;
      }
 
-    public static void showMenu(ArrayList<Question> questions){
+    public void showMenu(ArrayList<Question> questions){
         System.out.println("Cześć! Aby rozpocząć grę wybierz numer zestawu pytań (wpisz cyfrę między 1-5)");
         Scanner sc = new Scanner(System.in);
         int num = sc.nextInt();
@@ -53,20 +61,21 @@ public class Game {
 
         for (int i = 0; i < questions.size(); i++){
             System.out.println(questions.get(i).dispQuestion());
-
+            checkAnswer(getAnswerFromUser(), questions.get(i));
         }
+        System.out.print("Twój wynik: " + getScore());
+
 
     }
 
-    public String getAnswer(){
+    public String getAnswerFromUser(){
         Scanner sc = new Scanner(System.in);
         String num = sc.nextLine();
-
         return num;
     }
 
-    public int checkAnswer(String num, Question question) {
-        int answer = 0;
+    public void checkAnswer(String num, Question question) {
+        int answer = 5;
         switch (num){
             case "a": answer = 0;
                     break;
@@ -77,6 +86,15 @@ public class Game {
             case "d": answer = 3;
                 break;
         }
-        return answer;
+        if (answer == question.getCorrAns()) {
+            setScore(100);
+            System.out.println("Poprawna odpowiedź");
+        }
+        else {
+            System.out.println("Zła odpowiedź");
+            System.out.println("poprawna odpowiedź to: " + question.getCorrAns());
+        }
+
+
     }
 }

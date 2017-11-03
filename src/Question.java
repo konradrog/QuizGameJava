@@ -11,7 +11,7 @@ public class Question {
     public Question(String text, String[][] answers) {
         this.text = text;
         this.answers = answers;
-        this.setCorrAns();
+        this.corrAns = this.setCorrAns(answers);
     }
 
     public String getText() {
@@ -19,17 +19,16 @@ public class Question {
         return text;
     }
 
-    public void setCorrAns() {
-
+    public int setCorrAns(String[][] answers) {
+        int result = 0;
         for (int i=0; i < 4; i++) {
 
-            if (answers[i][0] == "1")
-            {
-                this.corrAns = i;
+            if (answers[i][0].equals("1")) {
+                result = i;
             }
 
         }
-
+        return result;
     }
 
     public int getCorrAns() {
