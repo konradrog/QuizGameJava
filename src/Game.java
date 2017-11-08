@@ -18,8 +18,11 @@ public class Game {
         this.score += score;
     }
 
-    public ArrayList<Question>/*static void*/ readFile() throws IOException {
-        FileReader fileReader = new FileReader("C:/Users/Konrad/IdeaProjects/QuizGame/src/pytania.txt");
+    public ArrayList<Question> readFile() throws IOException {
+        int set_number = chooseSetOfQuestions();
+        System.out.println("Wybrałeś zestaw pytań nr: " + set_number );
+
+        FileReader fileReader = new FileReader(getFileName(set_number));
         BufferedReader bufferedReader = new BufferedReader(fileReader);
 
         int buff = 0;
@@ -54,11 +57,6 @@ public class Game {
      }
 
     public void showMenu(ArrayList<Question> questions){
-        System.out.println("Cześć! Aby rozpocząć grę wybierz numer zestawu pytań (wpisz cyfrę między 1-5)");
-        Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
-        System.out.println("Wybrałeś zestaw pytań nr: " + num );
-
         for (int i = 0; i < questions.size(); i++){
             System.out.println(questions.get(i).dispQuestion());
             checkAnswer(getAnswerFromUser(), questions.get(i));
@@ -68,6 +66,31 @@ public class Game {
 
     }
 
+    public int chooseSetOfQuestions() {
+        System.out.println("Cześć! Aby rozpocząć grę wybierz numer zestawu pytań (wpisz cyfrę między 1-5)");
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        return num;
+    }
+
+    public String getFileName(int number){
+        String fileName = "";
+        switch (number){
+            case 1: fileName = "C:/Users/Konrad/IdeaProjects/QuizGame/src/1.txt";
+                break;
+            case 2: fileName = "C:/Users/Konrad/IdeaProjects/QuizGame/src/2.txt";
+                break;
+            case 3: fileName = "C:/Users/Konrad/IdeaProjects/QuizGame/src/3.txt";
+                break;
+            case 4: fileName = "C:/Users/Konrad/IdeaProjects/QuizGame/src/4.txt";
+                break;
+            case 5: fileName = "C:/Users/Konrad/IdeaProjects/QuizGame/src/5.txt";
+                break;
+
+        }
+
+        return fileName;
+    }
     public String getAnswerFromUser(){
         Scanner sc = new Scanner(System.in);
         String num = sc.nextLine();
