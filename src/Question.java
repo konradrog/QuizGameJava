@@ -47,6 +47,21 @@ public class Question {
         return "";
     }
 
+    public String showCorrAns() {
+        String corrAnsLetter = "";
+        switch (corrAns) {
+            case 0: corrAnsLetter = "a";
+                break;
+            case 1: corrAnsLetter = "b";
+                break;
+            case 2: corrAnsLetter = "c";
+                break;
+            case 3: corrAnsLetter = "d";
+                break;
+        }
+        return corrAnsLetter;
+    }
+
 
 
 }

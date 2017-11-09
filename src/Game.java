@@ -115,9 +115,7 @@ public class Game {
         }
         else {
             System.out.println("Zła odpowiedź");
-            System.out.println("poprawna odpowiedź to: " + question.getCorrAns());
+            System.out.println("Poprawna odpowiedź to: " + question.showCorrAns());
         }
-
-
     }
 }
