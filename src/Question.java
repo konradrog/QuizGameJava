@@ -2,14 +2,15 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
-/* pomyślec nad zmianą formatu pliku textowego, testy, osobna klasa do odpowiedzi, poprawić dokumentacje*/
+/* pomyślec nad zmianą formatu pliku textowego, testy*/
 public class Question {
     String text;
-    String[][] answers;
+    ArrayList<Answer> answers;
     int corrAns;
 
-    public Question(String text, String[][] answers) {
+    public Question(String text, ArrayList<Answer> answers) {
         this.text = text;
+
         this.answers = answers;
         this.corrAns = this.setCorrAns(answers);
     }
@@ -19,14 +20,12 @@ public class Question {
         return text;
     }
 
-    public int setCorrAns(String[][] answers) {
+    public int setCorrAns(ArrayList<Answer> answers) {
         int result = 0;
         for (int i=0; i < 4; i++) {
-
-            if (answers[i][0].equals("1")) {
+            if (answers.get(i).value.equals("1")) {
                 result = i;
             }
-
         }
         return result;
     }
@@ -42,7 +41,7 @@ public class Question {
         System.out.println(text);
         for (int i = 0; i < 4; i++)
         {
-            System.out.println(answers[i][1]);
+            System.out.println(answers.get(i).text);
         }
         return "";
     }
@@ -61,7 +60,5 @@ public class Question {
         }
         return corrAnsLetter;
     }
-
-
 
 }

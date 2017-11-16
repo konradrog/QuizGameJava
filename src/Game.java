@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
-
+/* dorobić obsługe liczb w wyborze pytania*/
 public class Game {
     int score = 0;
 
@@ -28,12 +28,14 @@ public class Game {
         int buff = 0;
         ArrayList<Question> questions = new ArrayList<Question>();
 
+
         for (int j = 0; j < 5; j++) {
             String text = "";
-            String[][] answers = new String[4][2] ;
-            int k=0;
-            for (int i = buff; i < buff+10; i++) {
+            ArrayList<Answer> answers = new ArrayList<Answer>();
 
+            int k=0;
+
+            for (int i = buff; i < buff+10; i++) {
                 if (i == buff) {
                     text = bufferedReader.readLine();
                 }
@@ -41,20 +43,22 @@ public class Game {
                     bufferedReader.readLine();
                 }
                 else if (i % 2 == 0) {
-                    answers[k][1] = bufferedReader.readLine();
+                    answers.get(k).setText(bufferedReader.readLine());
                     k++;
                 }
                 else if (i % 2 == 1) {
-                    answers[k][0] = bufferedReader.readLine();
+                    Answer answer = new Answer();
+                    answer.setValue( bufferedReader.readLine());
+                    answers.add(answer);
                 }
             }
+
             questions.add(new Question(text, answers));
-            //questions.get(j).dispQuestion();
             buff += 10;
         }
         bufferedReader.close();
         return questions;
-     }
+    }
 
     public void showMenu(ArrayList<Question> questions){
         for (int i = 0; i < questions.size(); i++){
@@ -108,6 +112,7 @@ public class Game {
                 break;
             case "d": answer = 3;
                 break;
+
         }
         if (answer == question.getCorrAns()) {
             setScore(100);
