@@ -19,7 +19,11 @@ public class Game {
     }
 
     public ArrayList<Question> readFile() throws IOException {
+
         int set_number = chooseSetOfQuestions();
+        while (set_number == 0) {
+            set_number = chooseSetOfQuestions();
+        }
         System.out.println("Wybrałeś zestaw pytań nr: " + set_number );
 
         FileReader fileReader = new FileReader(getFileName(set_number));
@@ -73,7 +77,16 @@ public class Game {
     public int chooseSetOfQuestions() {
         System.out.println("Cześć! Aby rozpocząć grę wybierz numer zestawu pytań (wpisz cyfrę między 1-5)");
         Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
+        int num = 0;
+        try {
+            num = sc.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Wybrałeś zły symbol, spróbuj ponownie");
+        }
+        if (num < 1 || num > 4) {
+            System.out.println("Wybrałeś zły numer, spróbuj ponownie");
+            num = 0;
+        }
         return num;
     }
 
@@ -90,11 +103,10 @@ public class Game {
                 break;
             case 5: fileName = "C:/Users/Konrad/IdeaProjects/QuizGame/src/5.txt";
                 break;
-
         }
-
         return fileName;
     }
+
     public String getAnswerFromUser(){
         Scanner sc = new Scanner(System.in);
         String num = sc.nextLine();
