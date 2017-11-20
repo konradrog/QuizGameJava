@@ -2,7 +2,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 /* wczytywanie plik, i sprawdzanie pliku. zapis do .jar*, drugie konto do repo*/
-//public class QuestionTest {
+public class QuestionTest {
 //
 //    private String[][] answers = new String[][]{
 //            {"0", "Odpowiedz 1"},
@@ -26,7 +26,4 @@ import static org.junit.Assert.*;
 //    public void getCorrectAnswer() throws Exception {
 //        assertEquals(3, question.getCorrAns());
 //    }
-//
-//
-//
-//}
+}
